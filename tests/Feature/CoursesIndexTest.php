@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\ClassRegistered;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
 test('home page renders successfully', function () {
@@ -24,6 +26,8 @@ test('masterclass form validation works', function () {
 });
 
 test('form registers successfully', function () {
+    Mail::fake();
+
     Livewire::test('pages::home')
         ->set('name', 'Amit Sharma')
         ->set('email', 'amit@gmail.com')
@@ -31,5 +35,8 @@ test('form registers successfully', function () {
         ->call('submit')
         ->assertHasNoErrors()
         ->assertSet('success', true)
-        ->assertSet('price', 499);
+        ->assertSet('price', 499)
+        ->assertRedirect('https://www.yourbeep.com/courses/6a41f00fdc0af597eb154d43/pricing');
+
+    Mail::assertSent(ClassRegistered::class);
 });

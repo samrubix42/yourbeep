@@ -1,6 +1,9 @@
 <?php
 
+use App\Mail\ClassRegistered;
+use App\Models\Registration;
 use App\Models\Testimonial;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -87,7 +90,19 @@ new #[Layout('components.layouts.app')] class extends Component
     public function submit(): void
     {
         $this->validate();
+
+        $registration = Registration::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'price' => $this->price,
+        ]);
+
+        Mail::to('samcool3203@gmail.com')->send(new ClassRegistered($registration));
+
         $this->success = true;
+
+        $this->redirect('https://www.yourbeep.com/courses/6a41f00fdc0af597eb154d43/pricing');
     }
 
     /**

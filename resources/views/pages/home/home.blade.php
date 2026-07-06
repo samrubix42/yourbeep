@@ -2,7 +2,8 @@
     showStickyBtn: false,
     toastOpen: false,
     toastUser: { name: '', city: '', time_ago: '' },
-    purchasersList: @js($this->purchasers)
+    purchasersList: @js($this->purchasers),
+    activeFaq: null
 }" x-init="
     // Scroll event for sticky footer
     window.addEventListener('scroll', () => {
@@ -61,7 +62,7 @@
                     </div>
 
                     <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-light font-sans max-w-2xl">
-                        Explore the four key dimensions of behavioural wellbeing. Learn to recognize the invisible drivers behind your actions—avoidance, hyper-control, validation seeking, emotional suppression or hypervigilance—and consciously choose responses that serve your wellbeing, relationships, and performance.
+                        Explore the four key dimensions of behavioural wellbeing. Learn to recognize the invisible drivers behind your actions avoidance, hyper-control, validation seeking, emotional suppression or hypervigilance and consciously choose responses that serve your wellbeing, relationships, and performance.
                     </p>
 
                     <!-- Interactive Signal Progression Map (Upgraded Corporate/Academy style) -->
@@ -219,8 +220,12 @@
                                     </div>
 
                                     <!-- Submit -->
-                                    <button type="submit" class="w-full mt-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-teal-500/20 hover:shadow-teal-500/35 transition transform duration-150 active:scale-95 text-center text-xs uppercase tracking-wider cursor-pointer">
-                                        Book Seat (₹499)
+                                    <button type="submit" wire:loading.attr="disabled" wire:target="submit" class="w-full mt-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-teal-500/20 hover:shadow-teal-500/35 transition transform duration-150 active:scale-95 text-center text-xs uppercase tracking-wider cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                                        <span>Book Seat (₹499)</span>
+                                        <svg wire:loading wire:target="submit" class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
                                     </button>
                                 </form>
 
@@ -376,39 +381,63 @@
         </section>
 
         <!-- SECTION 5: Guide / Instructor Section (CLEAN LIGHT SECTION CONTINUED) -->
-        <section class="w-full bg-slate-50 text-slate-800 py-24 border-b border-slate-200/60">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <!-- SECTION 5: Guide / Instructor Section (PREMIUM LIGHT SECTION WITH MESH BACKGROUND) -->
+        <section class="w-full bg-slate-50 text-slate-800 py-24 border-b border-slate-200/60 relative overflow-hidden">
+            <!-- Dotted Background Grid Mesh -->
+            <div class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-teal-500/[0.03] rounded-full blur-[80px] pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
                     
                     <!-- Headshot Image Column (5 Cols) -->
                     <div class="md:col-span-5 relative group max-w-[280px] mx-auto md:max-w-none">
-                        <div class="absolute inset-0 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-3xl blur-[16px] opacity-10"></div>
-                        <div class="relative bg-white border border-slate-200 rounded-3xl overflow-hidden aspect-square shadow-md">
-                            <img src="https://res.cloudinary.com/doijiooei/image/upload/v1782705750/yourbeep/admin/courses/instructors/cropped-Headshot_bfurfg.png" alt="Alolika Savant - YourBeep Guide" class="w-full h-full object-cover">
+                        <!-- Multi-layered glowing backlights -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-teal-500 to-emerald-600 rounded-3xl blur-[20px] opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                        <div class="relative bg-white border border-slate-250/80 p-3 rounded-3xl shadow-xl transition-transform duration-550 group-hover:scale-[1.02]">
+                            <div class="rounded-2xl overflow-hidden aspect-square border border-slate-100 bg-slate-50">
+                                <img src="https://res.cloudinary.com/doijiooei/image/upload/v1782705750/yourbeep/admin/courses/instructors/cropped-Headshot_bfurfg.png" alt="Alolika Savant - YourBeep Guide" class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition duration-500">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Profile bio Column (7 Cols) -->
                     <div class="md:col-span-7 space-y-6 text-left">
-                        <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block"><i class="ri-user-star-line"></i> Your Masterclass Guide</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold text-teal-700 uppercase tracking-widest shadow-xs"><i class="ri-user-star-line text-teal-650"></i> Your Masterclass Guide</span>
                         
-                        <div class="space-y-1">
-                            <h2 class="text-3xl font-extrabold text-slate-900 leading-tight font-sans">Alolika Savant</h2>
-                            <span class="block text-slate-550 font-semibold text-sm font-sans">Founder, Yourbeep</span>
+                        <div class="space-y-1.5">
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight font-sans tracking-tight">Alolika Savant</h2>
+                            <span class="block text-slate-500 font-bold text-sm sm:text-base font-sans flex items-center gap-2">
+                                Founder, Yourbeep
+                                <span class="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
+                                BSI™ Pioneer
+                            </span>
                         </div>
 
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        <p class="text-sm text-slate-600 leading-relaxed font-light font-sans">
                             With ~15 years of experience in leadership, coaching, and human-centred transformations, Alolika Savant created Behavioural Signal Intelligence™ to help individuals channelize self-awareness into actionable personal growth.
                         </p>
 
-                        <div class="pt-4 border-t border-slate-200 flex gap-6">
-                            <div>
-                                <span class="block text-lg font-bold text-slate-900">15+</span>
-                                <span class="block text-[10px] text-slate-400 uppercase tracking-wider">Years Exp</span>
+                        <!-- Upgrade Stats block to card elements -->
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/80">
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-650 flex-shrink-0">
+                                    <i class="ri-medal-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-base font-bold text-slate-900 leading-tight">15+ Years</span>
+                                    <span class="block text-[10px] text-slate-400 uppercase font-semibold">Leadership Experience</span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="block text-lg font-bold text-slate-900">BSI™</span>
-                                <span class="block text-[10px] text-slate-400 uppercase tracking-wider">Philosophy</span>
+
+                            <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                                    <i class="ri-shield-check-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-base font-bold text-slate-900 leading-tight">Official BSI™</span>
+                                    <span class="block text-[10px] text-slate-400 uppercase font-semibold">Licensed Framework</span>
+                                </div>
                             </div>
                         </div>
                     </div>
