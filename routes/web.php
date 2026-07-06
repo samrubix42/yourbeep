@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::livewire('/', 'pages::home')->name('home');
+Route::livewire('/home', 'pages::home');
+Route::livewire('/courses', 'pages::home')->name('courses.index');
