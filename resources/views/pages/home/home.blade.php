@@ -3,7 +3,8 @@
     toastOpen: false,
     toastUser: { name: '', city: '', time_ago: '' },
     purchasersList: @js($this->purchasers),
-    activeFaq: null
+    activeFaq: null,
+    bsiTab: 1
 }" x-init="
     // Scroll event for sticky footer
     window.addEventListener('scroll', () => {
@@ -29,14 +30,16 @@
     <livewire:public.header />
 
     <!-- HERO SECTION (Clean Light Theme aligned with Black-text Logo) -->
-    <section class="w-full bg-white border-b border-slate-100 pb-24 relative overflow-hidden">
+    <section class="w-full bg-white border-b border-slate-100 pb-24 sm:pb-32 relative overflow-hidden">
+        <!-- Subtle dotted grid mesh pattern -->
+        <div class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none"></div>
         
         <!-- Subtle Teal background glow lights -->
-        <div class="absolute top-0 right-1/4 w-[400px] h-[400px] bg-teal-400/[0.04] rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-1/4 w-[350px] h-[350px] bg-emerald-400/[0.04] rounded-full blur-[90px] pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-[450px] h-[450px] bg-teal-500/[0.06] rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-emerald-500/[0.05] rounded-full blur-[100px] pointer-events-none"></div>
 
         <!-- Hero Content Grid -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
                 <!-- Hero Left (7 Cols) -->
@@ -65,56 +68,77 @@
                         Explore the four key dimensions of behavioural wellbeing. Learn to recognize the invisible drivers behind your actions avoidance, hyper-control, validation seeking, emotional suppression or hypervigilance and consciously choose responses that serve your wellbeing, relationships, and performance.
                     </p>
 
-                    <!-- Interactive Signal Progression Map (Upgraded Corporate/Academy style) -->
-                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 space-y-5 shadow-sm relative">
-                        <div class="absolute -top-3 left-6 px-3 py-0.5 bg-white border border-slate-200 rounded-full text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                            The BSI™ Framework
+                    <!-- Interactive Signal Progression Map (Interactive Tabbed BSI Roadmap) -->
+                    <div class="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-6 sm:p-8 space-y-5 shadow-sm relative backdrop-blur-xs">
+                        <div class="absolute -top-3 left-6 px-3 py-0.5 bg-white border border-slate-200 rounded-full text-[10px] font-bold text-slate-500 uppercase tracking-widest shadow-2xs">
+                            Interactive BSI™ Framework
                         </div>
                         
-                        <div class="grid grid-cols-7 gap-1 items-center text-center pt-2">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-1 pt-2">
                             <!-- Step 1 -->
-                            <div class="bg-white border border-slate-200/80 p-2 rounded-xl shadow-xs transition duration-300 hover:border-teal-500/30">
-                                <span class="flex items-center justify-center w-8 h-8 mx-auto rounded-lg bg-rose-50 text-rose-600 text-base mb-1"><i class="ri-empathize-line"></i></span>
-                                <span class="block text-[10px] font-semibold text-slate-700">Emotions</span>
-                            </div>
-                            <div class="text-slate-350"><i class="ri-arrow-right-s-line text-lg"></i></div>
+                            <button type="button" @click="bsiTab = 1" :class="bsiTab === 1 ? 'border-teal-500/50 bg-teal-500/5 ring-2 ring-teal-500/10' : 'bg-white border-slate-200/80'" class="flex sm:flex-col items-center gap-3 sm:gap-1 border p-3 sm:p-2.5 rounded-xl shadow-xs transition duration-300 w-full sm:w-[22%] text-left sm:text-center cursor-pointer hover:border-teal-500/30">
+                                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-rose-50 text-rose-600 text-base flex-shrink-0"><i class="ri-empathize-line"></i></span>
+                                <span class="block text-xs sm:text-[10px] font-bold text-slate-800">1. Emotions</span>
+                            </button>
+                            <div class="text-slate-350 transform rotate-90 sm:rotate-0"><i class="ri-arrow-right-s-line text-lg"></i></div>
                             <!-- Step 2 -->
-                            <div class="bg-white border border-slate-200/80 p-2 rounded-xl shadow-xs transition duration-300 hover:border-teal-500/30">
-                                <span class="flex items-center justify-center w-8 h-8 mx-auto rounded-lg bg-blue-50 text-blue-600 text-base mb-1"><i class="ri-radar-line"></i></span>
-                                <span class="block text-[10px] font-semibold text-slate-700">Signals</span>
-                            </div>
-                            <div class="text-slate-350"><i class="ri-arrow-right-s-line text-lg"></i></div>
+                            <button type="button" @click="bsiTab = 2" :class="bsiTab === 2 ? 'border-teal-500/50 bg-teal-500/5 ring-2 ring-teal-500/10' : 'bg-white border-slate-200/80'" class="flex sm:flex-col items-center gap-3 sm:gap-1 border p-3 sm:p-2.5 rounded-xl shadow-xs transition duration-300 w-full sm:w-[22%] text-left sm:text-center cursor-pointer hover:border-teal-500/30">
+                                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-blue-600 text-base flex-shrink-0"><i class="ri-radar-line"></i></span>
+                                <span class="block text-xs sm:text-[10px] font-bold text-slate-800">2. Signals</span>
+                            </button>
+                            <div class="text-slate-350 transform rotate-90 sm:rotate-0"><i class="ri-arrow-right-s-line text-lg"></i></div>
                             <!-- Step 3 -->
-                            <div class="bg-white border border-slate-200/80 p-2 rounded-xl shadow-xs transition duration-300 hover:border-teal-500/30">
-                                <span class="flex items-center justify-center w-8 h-8 mx-auto rounded-lg bg-amber-50 text-amber-600 text-base mb-1"><i class="ri-flashlight-line"></i></span>
-                                <span class="block text-[10px] font-semibold text-slate-700">Behaviours</span>
-                            </div>
-                            <div class="text-slate-350"><i class="ri-arrow-right-s-line text-lg"></i></div>
+                            <button type="button" @click="bsiTab = 3" :class="bsiTab === 3 ? 'border-teal-500/50 bg-teal-500/5 ring-2 ring-teal-500/10' : 'bg-white border-slate-200/80'" class="flex sm:flex-col items-center gap-3 sm:gap-1 border p-3 sm:p-2.5 rounded-xl shadow-xs transition duration-300 w-full sm:w-[22%] text-left sm:text-center cursor-pointer hover:border-teal-500/30">
+                                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 text-amber-600 text-base flex-shrink-0"><i class="ri-flashlight-line"></i></span>
+                                <span class="block text-xs sm:text-[10px] font-bold text-slate-800">3. Behaviours</span>
+                            </button>
+                            <div class="text-slate-350 transform rotate-90 sm:rotate-0"><i class="ri-arrow-right-s-line text-lg"></i></div>
                             <!-- Step 4 -->
-                            <div class="bg-white border border-slate-200/80 p-2 rounded-xl shadow-xs transition duration-300 hover:border-teal-500/30">
-                                <span class="flex items-center justify-center w-8 h-8 mx-auto rounded-lg bg-emerald-50 text-emerald-600 text-base mb-1"><i class="ri-fingerprint-line"></i></span>
-                                <span class="block text-[10px] font-semibold text-slate-700">Identity</span>
-                            </div>
+                            <button type="button" @click="bsiTab = 4" :class="bsiTab === 4 ? 'border-teal-500/50 bg-teal-500/5 ring-2 ring-teal-500/10' : 'bg-white border-slate-200/80'" class="flex sm:flex-col items-center gap-3 sm:gap-1 border p-3 sm:p-2.5 rounded-xl shadow-xs transition duration-300 w-full sm:w-[22%] text-left sm:text-center cursor-pointer hover:border-teal-500/30">
+                                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 text-base flex-shrink-0"><i class="ri-fingerprint-line"></i></span>
+                                <span class="block text-xs sm:text-[10px] font-bold text-slate-800">4. Identity</span>
+                            </button>
                         </div>
                         
-                        <p class="text-[11px] sm:text-xs text-slate-500 font-light leading-relaxed text-center italic bg-white/50 border border-slate-100 p-2 rounded-lg">
-                            "Emotions create physical signals. Signals drive automated behaviours. Over time, recurring behaviours harden into your identity."
-                        </p>
+                        <!-- Interactive Content Cards based on active tab -->
+                        <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-inner min-h-[72px] flex items-center justify-center">
+                            <p x-show="bsiTab === 1" class="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-center font-sans">
+                                <strong>Emotions:</strong> Raw physiological sensations triggered by external events. BSI™ teaches you to capture them before they register as conscious thoughts.
+                            </p>
+                            <p x-show="bsiTab === 2" class="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-center font-sans" x-cloak>
+                                <strong>Signals:</strong> Physical tells (muscle tightness, shallow breathing, racing pulse) that act as early warning indicators of stress or anxiety.
+                            </p>
+                            <p x-show="bsiTab === 3" class="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-center font-sans" x-cloak>
+                                <strong>Behaviours:</strong> Automated actions (avoidance, over-explaining, seeking validation) we use to seek temporary relief from uncomfortable signals.
+                            </p>
+                            <p x-show="bsiTab === 4" class="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-center font-sans" x-cloak>
+                                <strong>Identity:</strong> Over time, recurring automated behaviours harden into your personality traits, self-image, and default responses.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Highlights Grid -->
-                    <div class="grid grid-cols-3 gap-4 pt-2">
-                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-3.5 text-center shadow-xs">
-                            <span class="block text-slate-450 text-[10px] font-bold uppercase tracking-wider">Duration</span>
-                            <span class="block text-xs sm:text-sm font-semibold text-slate-800 mt-1.5"><i class="ri-calendar-event-line text-teal-600 mr-1"></i> 3 Days</span>
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-2">
+                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-2 sm:p-3.5 text-center shadow-xs">
+                            <span class="block text-slate-455 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">Duration</span>
+                            <span class="flex flex-col sm:flex-row items-center justify-center gap-1 text-[11px] sm:text-sm font-semibold text-slate-800 mt-1.5">
+                                <i class="ri-calendar-event-line text-teal-600"></i>
+                                <span class="whitespace-nowrap">3 Days</span>
+                            </span>
                         </div>
-                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-3.5 text-center shadow-xs">
-                            <span class="block text-slate-450 text-[10px] font-bold uppercase tracking-wider">Level</span>
-                            <span class="block text-xs sm:text-sm font-semibold text-slate-800 mt-1.5"><i class="ri-user-line text-teal-600 mr-1"></i> Executive</span>
+                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-2 sm:p-3.5 text-center shadow-xs">
+                            <span class="block text-slate-455 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">Level</span>
+                            <span class="flex flex-col sm:flex-row items-center justify-center gap-1 text-[11px] sm:text-sm font-semibold text-slate-800 mt-1.5">
+                                <i class="ri-user-line text-teal-650"></i>
+                                <span class="whitespace-nowrap">Executive</span>
+                            </span>
                         </div>
-                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-3.5 text-center shadow-xs">
-                            <span class="block text-slate-450 text-[10px] font-bold uppercase tracking-wider">Language</span>
-                            <span class="block text-xs sm:text-sm font-semibold text-slate-800 mt-1.5"><i class="ri-global-line text-teal-600 mr-1"></i> English</span>
+                        <div class="bg-slate-50/60 border border-slate-200/80 rounded-xl p-2 sm:p-3.5 text-center shadow-xs">
+                            <span class="block text-slate-455 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">Language</span>
+                            <span class="flex flex-col sm:flex-row items-center justify-center gap-1 text-[11px] sm:text-sm font-semibold text-slate-800 mt-1.5">
+                                <i class="ri-global-line text-teal-600"></i>
+                                <span class="whitespace-nowrap">English</span>
+                            </span>
                         </div>
                     </div>
 
@@ -239,6 +263,8 @@
 
             </div>
         </div>
+
+
     </section>
 
     <!-- CONTENT SECTIONS (Hybrid Dark & Light Theme) -->
@@ -346,36 +372,119 @@
                     <p class="text-slate-500 text-sm max-w-lg mx-auto font-light">Explore what is packed inside the class lesson and practical somatic exercises.</p>
                 </div>
 
-                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
-                    <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-4 gap-4">
-                        <div class="space-y-1">
-                            <span class="text-xs font-bold text-slate-400 uppercase">Lesson 1</span>
-                            <h3 class="text-xl font-bold text-slate-900">Masterclass Foundations</h3>
-                        </div>
-                        <div class="flex gap-2">
-                            <span class="text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3.5 py-1 rounded shadow-sm"><i class="ri-video-line text-teal-650 mr-1"></i> 1 Video Lesson</span>
-                            <span class="text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3.5 py-1 rounded shadow-sm"><i class="ri-heart-pulse-line text-teal-650 mr-1"></i> 2 Somatic Activities</span>
+                <div x-data="{ activeDay: 1 }" class="space-y-4 max-w-4xl mx-auto">
+                    
+                    <!-- Day 1 Accordion -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10 bg-white': activeDay === 1 }">
+                        <button type="button" @click="activeDay = (activeDay === 1 ? null : 1)" class="w-full flex flex-wrap items-center justify-between p-5 sm:p-6 text-left gap-4 cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-xs font-bold text-teal-600 uppercase tracking-widest font-mono">Day 1 / Foundation</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">Somatic Signal Mapping & Awareness</h3>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-video-line text-teal-650 mr-1"></i> 1 Video Lesson</span>
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-heart-pulse-line text-teal-650 mr-1"></i> 2 Activities</span>
+                                <i class="text-slate-400 transition-transform duration-300 text-xl" :class="activeDay === 1 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
+                            </div>
+                        </button>
+                        
+                        <div x-show="activeDay === 1" x-collapse>
+                            <div class="p-5 sm:p-6 pt-0 border-t border-slate-100 space-y-6">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                                    Rather than offering another productivity hack or meditation routine, you'll learn how behavioural wellbeing helps you interrupt that process before it becomes automatic. You'll explore the difference between mental wellbeing and behavioural wellbeing, understand why temporary relief rarely creates lasting change, and discover how your body often reveals your internal state long before your mind does. Through simple awareness exercises, guided reflections and practical demonstrations, you'll begin observing yourself differently.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block mb-1.5"><i class="ri-focus-2-line mr-1 text-teal-600"></i> Somatic awareness activity</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            Body scanning cues to notice physiological signals and tension blocks before emotional reactions escalate.
+                                        </p>
+                                    </div>
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest block mb-1.5"><i class="ri-mind-map mr-1 text-emerald-600"></i> Pattern mapping activity</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            Observe recurring behavioural signals in real-time throughout your daily relationships and work flow.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                        Rather than offering another productivity hack or meditation routine, you'll learn how behavioural wellbeing helps you interrupt that process before it becomes automatic. You'll explore the difference between mental wellbeing and behavioural wellbeing, understand why temporary relief rarely creates lasting change, and discover how your body often reveals your internal state long before your mind does. Through simple awareness exercises, guided reflections and practical demonstrations, you'll begin observing yourself differently not to judge yourself, but to recognize the invisible loops shaping your daily life.
-                    </p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                        <div class="border border-slate-200 bg-white p-5 rounded-2xl shadow-sm">
-                            <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block mb-1"><i class="ri-focus-2-line mr-1 text-teal-600"></i> Somatic awareness activity</span>
-                            <p class="text-xs text-slate-500 leading-relaxed font-light">
-                                Body scanning cues to notice physiological signals and tension blocks before emotional reactions escalate.
-                            </p>
-                        </div>
-                        <div class="border border-slate-200 bg-white p-5 rounded-2xl shadow-sm">
-                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest block mb-1"><i class="ri-mind-map mr-1 text-emerald-600"></i> Pattern mapping activity</span>
-                            <p class="text-xs text-slate-500 leading-relaxed font-light">
-                                Observe recurring behavioural signals in real-time throughout your daily relationships and work flow.
-                            </p>
+                    <!-- Day 2 Accordion -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10 bg-white': activeDay === 2 }">
+                        <button type="button" @click="activeDay = (activeDay === 2 ? null : 2)" class="w-full flex flex-wrap items-center justify-between p-5 sm:p-6 text-left gap-4 cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-xs font-bold text-teal-600 uppercase tracking-widest font-mono">Day 2 / Deep Dive</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">Decoding Automation Loops</h3>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-video-line text-teal-650 mr-1"></i> 1 Video Lesson</span>
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-article-line text-teal-650 mr-1"></i> 1 PDF Guide</span>
+                                <i class="text-slate-400 transition-transform duration-300 text-xl" :class="activeDay === 2 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
+                            </div>
+                        </button>
+                        
+                        <div x-show="activeDay === 2" x-collapse x-cloak>
+                            <div class="p-5 sm:p-6 pt-0 border-t border-slate-100 space-y-6">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                                    Deep dive into the four primary dimensions of behavioural coping: avoidance, hyper-control, validation seeking, and suppression. Learn how each loop operates, identify your dominant patterns, and map out the exact sequence of events that triggers your automated reactions.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block mb-1.5"><i class="ri-survey-line mr-1 text-teal-600"></i> Automation Loop Audit</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            A structured workbook to log and classify your automated reactions over the past 30 days.
+                                        </p>
+                                    </div>
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest block mb-1.5"><i class="ri-bubble-chart-line mr-1 text-emerald-600"></i> Coping Strategy Matrix</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            Visualize the immediate short-term relief vs the long-term compounding cost of each coping method.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Day 3 Accordion -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10 bg-white': activeDay === 3 }">
+                        <button type="button" @click="activeDay = (activeDay === 3 ? null : 3)" class="w-full flex flex-wrap items-center justify-between p-5 sm:p-6 text-left gap-4 cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-xs font-bold text-teal-600 uppercase tracking-widest font-mono">Day 3 / Action Plan</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">Implementing BSI™ Conscious Responses</h3>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-video-line text-teal-650 mr-1"></i> 1 Video Lesson</span>
+                                <span class="hidden xs:inline-flex text-xs font-medium text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded shadow-2xs"><i class="ri-award-line text-teal-650 mr-1"></i> 2 Integration Cues</span>
+                                <i class="text-slate-400 transition-transform duration-300 text-xl" :class="activeDay === 3 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
+                            </div>
+                        </button>
+                        
+                        <div x-show="activeDay === 3" x-collapse x-cloak>
+                            <div class="p-5 sm:p-6 pt-0 border-t border-slate-100 space-y-6">
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                                    Move from awareness to integration. Learn concrete ways to create a "gap" between feeling stress signals and choosing your response. We layout the exact methods to practice somatic self-regulation in real-time, allowing you to choose actions that serve your health, relationship boundaries, and professional goals.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block mb-1.5"><i class="ri-sparkling-line mr-1 text-teal-600"></i> Somatic Interrupters</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            3 quick physical exercises to lower heart rate and calm nervous system alerts in high-stakes moments.
+                                        </p>
+                                    </div>
+                                    <div class="border border-slate-200/80 bg-white p-4.5 rounded-xl shadow-2xs">
+                                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest block mb-1.5"><i class="ri-compass-line mr-1 text-emerald-600"></i> Habit Integration Map</span>
+                                        <p class="text-xs text-slate-500 leading-relaxed font-light">
+                                            Develop a customized daily workflow prompt to practice signal recognition in real life.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -407,7 +516,7 @@
                         
                         <div class="space-y-1.5">
                             <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight font-sans tracking-tight">Alolika Savant</h2>
-                            <span class="block text-slate-500 font-bold text-sm sm:text-base font-sans flex items-center gap-2">
+                            <span class="block text-slate-500 font-bold text-sm sm:text-base font-sans flex flex-wrap items-center gap-2">
                                 Founder, Yourbeep
                                 <span class="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
                                 BSI™ Pioneer
@@ -419,7 +528,7 @@
                         </p>
 
                         <!-- Upgrade Stats block to card elements -->
-                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/80">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80">
                             <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-650 flex-shrink-0">
                                     <i class="ri-medal-line text-lg"></i>
@@ -469,7 +578,7 @@
                 <div class="relative w-full overflow-hidden flex">
                     <div class="animate-marquee-reverse flex gap-6 whitespace-nowrap">
                         @foreach(array_merge($row1Testimonials, $row1Testimonials, $row1Testimonials) as $testimonial)
-                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
+                            <div class="w-[280px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-center gap-1 text-amber-400 mb-3.5">
                                         @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
@@ -496,7 +605,7 @@
                 <div class="relative w-full overflow-hidden flex">
                     <div class="animate-marquee flex gap-6 whitespace-nowrap">
                         @foreach(array_merge($row2Testimonials, $row2Testimonials, $row2Testimonials) as $testimonial)
-                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
+                            <div class="w-[280px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-center gap-1 text-amber-400 mb-3.5">
                                         @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
@@ -535,12 +644,12 @@
                 
                 <!-- FAQ 1 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 0 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 0 ? null : 0)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 0 ? null : 0)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>What will I learn in this masterclass?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 0 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 0" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             You'll learn how behavioural patterns develop, why they become automatic, the difference between mental and behavioural wellbeing, and how emotions, physiology and behaviour interact.
                         </div>
                     </div>
@@ -548,12 +657,12 @@
 
                 <!-- FAQ 2 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 1 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 1 ? null : 1)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 1 ? null : 1)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>Is this the same as the Behavioural Signal Intelligence (BSI) course?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 1 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 1" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             No. This masterclass introduces the core concepts behind Behavioural Signal Intelligence. The full BSI program explores these frameworks in significantly greater depth, with comprehensive assessments, exercises and practical applications.
                         </div>
                     </div>
@@ -561,12 +670,12 @@
 
                 <!-- FAQ 3 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 2 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 2 ? null : 2)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 2 ? null : 2)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>Will this help me change my habits?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 2 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 2" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             This masterclass primarily helps you understand why your habits exist. Awareness is the first step toward meaningful behavioural change, which is explored more comprehensively in the full BSI program.
                         </div>
                     </div>
@@ -574,12 +683,12 @@
 
                 <!-- FAQ 4 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 3 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 3 ? null : 3)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 3 ? null : 3)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>How practical is the course?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 3 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 3" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             Very practical. You'll experience simple exercises that help you observe emotional, physiological and behavioural signals in everyday situations.
                         </div>
                     </div>
@@ -587,12 +696,12 @@
 
                 <!-- FAQ 5 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 4 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 4 ? null : 4)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 4 ? null : 4)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>Is this based on meditation?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 4 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 4" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             No. While awareness is an important component, this framework focuses on observing behavioural patterns through practical exercises rather than relying solely on meditation.
                         </div>
                     </div>
@@ -600,12 +709,12 @@
 
                 <!-- FAQ 6 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 5 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 5 ? null : 5)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 5 ? null : 5)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>Is this suitable for working professionals?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 5 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 5" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             Yes. The concepts are designed around real-life situations including work, relationships, decision-making, stress and modern digital lifestyles.
                         </div>
                     </div>
@@ -613,12 +722,12 @@
 
                 <!-- FAQ 7 -->
                 <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="{ 'border-teal-500/35 ring-1 ring-teal-500/10': activeFaq === 6 }">
-                    <button type="button" @click="activeFaq = (activeFaq === 6 ? null : 6)" class="w-full flex items-center justify-between px-6 py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
+                    <button type="button" @click="activeFaq = (activeFaq === 6 ? null : 6)" class="w-full flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4.5 text-left font-bold text-slate-800 hover:text-teal-700 transition text-sm sm:text-base cursor-pointer">
                         <span>What happens after this masterclass?</span>
                         <i class="text-slate-500 transition-transform duration-300 text-lg" :class="activeFaq === 6 ? 'ri-subtract-line text-teal-600 rotate-180' : 'ri-add-line'"></i>
                     </button>
                     <div class="transition-all duration-300 overflow-hidden" x-show="activeFaq === 6" x-collapse>
-                        <div class="px-6 pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
+                        <div class="px-4 sm:px-6 pb-4 sm:pb-5 text-xs sm:text-sm text-slate-500 font-light leading-relaxed">
                             If you'd like to go beyond awareness into sustained behavioural transformation, the Behavioural Signal Intelligence program builds on these foundations with deeper frameworks, guided practices, behavioural assessments and long-term pattern development.
                         </div>
                     </div>
@@ -633,7 +742,7 @@
     <livewire:public.footer />
 
     <!-- Social Proof Notification Toaster (Bottom-Left popup, Clean Light style with Teal accents) -->
-    <div class="fixed bottom-6 left-6 z-50 bg-white border border-teal-500/20 rounded-2xl p-4.5 shadow-2xl max-w-sm flex items-center gap-3.5 backdrop-blur transition-all duration-500 transform"
+    <div class="fixed bottom-24 md:bottom-6 left-4 md:left-6 right-4 md:right-auto z-50 bg-white border border-teal-500/20 rounded-2xl p-4 sm:p-4.5 shadow-2xl max-w-[calc(100%-2rem)] md:max-w-sm flex items-center gap-3.5 backdrop-blur transition-all duration-500 transform"
          x-show="toastOpen"
          x-transition:enter="transition ease-out duration-500"
          x-transition:enter-start="opacity-0 translate-y-8 scale-95"
@@ -642,7 +751,7 @@
          x-transition:leave-start="opacity-100 translate-y-0 scale-100"
          x-transition:leave-end="opacity-0 -translate-y-8 scale-95">
         
-        <div class="w-8.5 h-8.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold select-none">
+        <div class="w-8.5 h-8.5 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold select-none flex-shrink-0">
             <i class="ri-user-received-2-line text-sm"></i>
         </div>
         <div class="space-y-0.5 pr-2 text-left">
@@ -653,7 +762,7 @@
                 just purchased the masterclass! <span class="text-slate-455 font-mono" x-text="'(' + toastUser.time_ago + ')'"></span>
             </p>
         </div>
-        <button type="button" @click="toastOpen = false" class="text-slate-400 hover:text-slate-650 text-sm font-semibold select-none ml-auto cursor-pointer">
+        <button type="button" @click="toastOpen = false" class="text-slate-400 hover:text-slate-650 text-sm font-semibold select-none ml-auto cursor-pointer flex-shrink-0">
             <i class="ri-close-line text-base"></i>
         </button>
     </div>
