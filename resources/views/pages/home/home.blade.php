@@ -469,27 +469,23 @@
                 <div class="relative w-full overflow-hidden flex">
                     <div class="animate-marquee-reverse flex gap-6 whitespace-nowrap">
                         @foreach(array_merge($row1Testimonials, $row1Testimonials, $row1Testimonials) as $testimonial)
-                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group">
-                                <div class="flex items-center gap-1 text-amber-400 mb-3.5">
-                                    @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
-                                        <i class="ri-star-fill text-sm"></i>
-                                    @endfor
+                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center gap-1 text-amber-400 mb-3.5">
+                                        @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
+                                            <i class="ri-star-fill text-xs"></i>
+                                        @endfor
+                                    </div>
+                                    <p class="text-slate-300 font-light text-xs sm:text-sm leading-relaxed mb-5 min-h-[72px]">
+                                        "{{ $testimonial['content'] }}"
+                                    </p>
                                 </div>
-                                <p class="text-slate-300 font-light text-xs sm:text-sm leading-relaxed mb-5 min-h-[72px]">
-                                    "{{ $testimonial['content'] }}"
-                                </p>
-                                <div class="flex items-center gap-3 border-t border-slate-800/60 pt-4">
-                                    @if($testimonial['avatar'])
-                                        <img src="{{ $testimonial['avatar'] }}" alt="{{ $testimonial['name'] }}" class="w-9 h-9 rounded-full object-cover border border-slate-700">
-                                    @else
-                                        <div class="w-9 h-9 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 font-bold text-xs uppercase">
-                                            {{ substr($testimonial['name'], 0, 2) }}
-                                        </div>
-                                    @endif
+                                <div class="flex items-center justify-between border-t border-slate-800/60 pt-4 mt-auto">
                                     <div class="space-y-0.5">
                                         <h4 class="text-xs sm:text-sm font-bold text-white">{{ $testimonial['name'] }}</h4>
                                         <span class="block text-[10px] text-slate-450">{{ $testimonial['role'] }}</span>
                                     </div>
+                                    <div class="text-slate-700 opacity-60"><i class="ri-double-quotes-r text-base"></i></div>
                                 </div>
                             </div>
                         @endforeach
@@ -500,27 +496,23 @@
                 <div class="relative w-full overflow-hidden flex">
                     <div class="animate-marquee flex gap-6 whitespace-nowrap">
                         @foreach(array_merge($row2Testimonials, $row2Testimonials, $row2Testimonials) as $testimonial)
-                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group">
-                                <div class="flex items-center gap-1 text-amber-400 mb-3.5">
-                                    @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
-                                        <i class="ri-star-fill text-sm"></i>
-                                    @endfor
+                            <div class="w-[320px] sm:w-[350px] flex-shrink-0 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 sm:p-6 shadow-xl backdrop-blur-sm whitespace-normal text-left hover:border-teal-500/30 hover:bg-slate-900/80 transition duration-300 group flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center gap-1 text-amber-400 mb-3.5">
+                                        @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
+                                            <i class="ri-star-fill text-xs"></i>
+                                        @endfor
+                                    </div>
+                                    <p class="text-slate-300 font-light text-xs sm:text-sm leading-relaxed mb-5 min-h-[72px]">
+                                        "{{ $testimonial['content'] }}"
+                                    </p>
                                 </div>
-                                <p class="text-slate-300 font-light text-xs sm:text-sm leading-relaxed mb-5 min-h-[72px]">
-                                    "{{ $testimonial['content'] }}"
-                                </p>
-                                <div class="flex items-center gap-3 border-t border-slate-800/60 pt-4">
-                                    @if($testimonial['avatar'])
-                                        <img src="{{ $testimonial['avatar'] }}" alt="{{ $testimonial['name'] }}" class="w-9 h-9 rounded-full object-cover border border-slate-700">
-                                    @else
-                                        <div class="w-9 h-9 rounded-full bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 font-bold text-xs uppercase">
-                                            {{ substr($testimonial['name'], 0, 2) }}
-                                        </div>
-                                    @endif
+                                <div class="flex items-center justify-between border-t border-slate-800/60 pt-4 mt-auto">
                                     <div class="space-y-0.5">
                                         <h4 class="text-xs sm:text-sm font-bold text-white">{{ $testimonial['name'] }}</h4>
-                                        <span class="block text-[10px] text-slate-455">{{ $testimonial['role'] }}</span>
+                                        <span class="block text-[10px] text-slate-450">{{ $testimonial['role'] }}</span>
                                     </div>
+                                    <div class="text-slate-700 opacity-60"><i class="ri-double-quotes-r text-base"></i></div>
                                 </div>
                             </div>
                         @endforeach
