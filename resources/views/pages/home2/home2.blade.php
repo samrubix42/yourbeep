@@ -587,7 +587,7 @@
                             <td class="p-6 text-slate-600 font-light bg-gradient-to-br from-teal-500/[0.01] to-emerald-500/[0.01]">
                                 <div class="flex items-start gap-2.5 text-teal-800 font-semibold">
                                     <i class="ri-checkbox-circle-fill text-teal-600 text-base mt-0.5 flex-shrink-0"></i>
-                                    <span><span class="line-through text-slate-400 font-normal">₹299</span> credited toward program</span>
+                                    <span><span class="line-through decoration-2 decoration-slate-400 text-slate-400 font-normal">₹499</span> <span class="text-teal-700 font-bold">₹299</span> credited toward program</span>
                                 </div>
                             </td>
                         </tr>
@@ -647,7 +647,7 @@
                 </h3>
                 
                 <p class="text-xs sm:text-sm text-slate-500 font-light leading-relaxed max-w-xl mx-auto font-sans">
-                    Your <span class="text-slate-850 font-semibold">₹299</span> counts toward the full program whenever you're ready.
+                    Your <span class="line-through decoration-2 decoration-slate-400 text-slate-400 font-normal">₹499</span> <span class="text-slate-850 font-semibold">₹299</span> counts toward the full program whenever you're ready.
                 </p>
 
                 <div class="pt-2">
@@ -1394,10 +1394,10 @@
                         <div class="space-y-2">
                             <h4 class="text-base font-bold text-slate-900 font-sans">Full Masterclass Fee — Credited to the Full Course</h4>
                             <p class="text-sm text-slate-600 leading-relaxed font-light font-sans">
-                                Loved the masterclass and want to go deeper? Your entire <span class="line-through text-slate-400">₹499</span> ₹299 is credited toward the full BSI course when you upgrade. You pay nothing twice.
+                                Loved the masterclass and want to go deeper? Your entire <span class="line-through decoration-2 decoration-slate-400 text-slate-400">₹499</span> ₹299 is credited toward the full BSI course when you upgrade. You pay nothing twice.
                             </p>
                             <div class="text-xs font-bold font-sans text-teal-700">
-                                <span class="line-through text-slate-400">₹499</span> ₹299 Credited back in full
+                                <span class="line-through decoration-2 decoration-slate-400 text-slate-400">₹499</span> ₹299 Credited back in full
                             </div>
                         </div>
                     </div>
