@@ -106,19 +106,19 @@
                                 <div class="space-y-2">
                                     <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Access Secured!</h3>
                                     <p class="text-slate-600 text-sm">
-                                        Welcome, <strong class="text-slate-850">{{ $this->name }}</strong>. You are successfully registered.
+                                        Thank you for showing your interest here, <strong class="text-slate-850">{{ $this->name }}</strong>. We will contact you shortly.
                                     </p>
                                 </div>
 
                                 <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left space-y-2 shadow-xs">
-                                    <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block">🚀 ONBOARDING DETAILS</span>
+                                    <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block">🚀 DETAILS CONFIRMED</span>
                                     <p class="text-xs text-slate-550 leading-relaxed">
-                                        We have registered your email <strong>{{ $this->email }}</strong>. Your access link and pre-read materials are being dispatched.
+                                        We have registered your email <strong>{{ $this->email }}</strong>. Thank you for showing your interest here, we will contact you shortly!
                                     </p>
                                 </div>
 
                                 <button type="button" wire:click="resetForm" class="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-4 cursor-pointer">
-                                    Register another user
+                                    Submit another user
                                 </button>
                             </div>
                         @else
