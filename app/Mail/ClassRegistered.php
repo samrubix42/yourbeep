@@ -28,7 +28,7 @@ class ClassRegistered extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Masterclass Registration: '.$this->registration->name,
+            subject: 'New Course Enquiry: '.$this->registration->name,
         );
     }
 

@@ -110,15 +110,11 @@
                                     </p>
                                 </div>
 
-                                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left space-y-4 shadow-xs">
+                                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left space-y-2 shadow-xs">
                                     <span class="text-xs font-bold text-teal-700 uppercase tracking-widest block">🚀 ONBOARDING DETAILS</span>
                                     <p class="text-xs text-slate-550 leading-relaxed">
                                         We have registered your email <strong>{{ $this->email }}</strong>. Your access link and pre-read materials are being dispatched.
                                     </p>
-                                    <a href="https://chat.whatsapp.com/yourbeep-bsi" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition shadow-md cursor-pointer">
-                                        <i class="ri-whatsapp-line text-lg"></i>
-                                        <span>Join WhatsApp Discussion Group</span>
-                                    </a>
                                 </div>
 
                                 <button type="button" wire:click="resetForm" class="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-4 cursor-pointer">
